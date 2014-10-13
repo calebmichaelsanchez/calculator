@@ -42,8 +42,12 @@ a {
 	text-decoration: none;
 	color: black;
 	font-size: 39px;
-	background: -webkit-gradient(linear, left top, left bottom, from(#EDEDED), to(#DCDCDC));
-	background: -moz-linear-gradient(top, #EDEDED, #DCDCDC);
+	background-color: #EDEDED; /* fallback color if gradients are not supported */
+	background-image: -webkit-linear-gradient(top, #EDEDED, #DCDCDC); /* For Chrome 25 and Safari 6, iOS 6.1, Android 4.3 */
+	background-image:    -moz-linear-gradient(top, #EDEDED, #DCDCDC); /* For Firefox (3.6 to 15) */
+	background-image:      -o-linear-gradient(top, #EDEDED, #DCDCDC); /* For old Opera (11.1 to 12.0) */ 
+	background-image:         linear-gradient(to bottom, #EDEDED, #DCDCDC); /* Standard syntax; must be last */
+
 	border-radius: 10px;
 }
 
@@ -53,4 +57,13 @@ a {
 	height: 50px;
 	padding: 10px;
 	margin: 5px 15px;
+}
+
+a:hover{
+	background-color: #DCDCDC; /* fallback color if gradients are not supported */
+	background-image: -webkit-linear-gradient(top, #DCDCDC, #EDEDED); /* For Chrome 25 and Safari 6, iOS 6.1, Android 4.3 */
+	background-image:    -moz-linear-gradient(top, #DCDCDC, #EDEDED); /* For Firefox (3.6 to 15) */
+	background-image:      -o-linear-gradient(top, #DCDCDC, #EDEDED); /* For old Opera (11.1 to 12.0) */ 
+	background-image:         linear-gradient(to bottom, #DCDCDC, #EDEDED); /* Standard syntax; must be last */
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#EDEDED', endColorstr='#DCDCDC');
 }

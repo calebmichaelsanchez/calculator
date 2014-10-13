@@ -12,4 +12,58 @@ $(document).ready(function(){
 	var number = ""
     newnumber = ""
     operator = ""
+    totaldiv = $('#total');
+
+    totaldiv.text("0");
+
+    $("#numbers a").not("#clear,#clearall").click(function(){
+        //action here
+        number += $(this).html();
+        totaldiv.text(number);
+        testNumLength(number);
+    });
+
+    $("#operators a").not("#equals").click(function(){
+        operator += $(this).html();
+        newnumber = number;
+        number = "";
+        totaldiv.text("0");
+    });
+
+    $("#clear").click(function(){
+        number = "";
+        totaldiv.text("0");
+    });
+    $("#clearall").click(function(){
+        number = "";
+        totaldiv.text("0");
+        newnumber = "";
+    });
+
+    $("#equals").click(function(){
+        number = parseInt(number, 10);
+        newnumber = parseInt(newnumber, 10);
+        var result;
+        if (operator === "+") {
+            result = newnumber+number;
+        }
+        else if (operator === "-") {
+            result = newnumber-number;  
+        }
+        else if (operator === "*") {
+            result = newnumber*number;
+        }
+        else if (operator === "/") {
+            result = newnumber/number;
+        }
+
+        result = result.toString(10);
+        totaldiv.text(result);
+        testNumLength(result);
+        number = "";
+        newnumber = "";
+    });
+
+
+
 });
